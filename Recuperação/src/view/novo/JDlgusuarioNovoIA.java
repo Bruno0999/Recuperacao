@@ -1,4 +1,4 @@
-package view;
+package view.novo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -146,7 +146,7 @@ public class JDlgusuarioNovoIA extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(JTxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
+                            .addComponent(JTxtNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)

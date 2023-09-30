@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author migma
+ * @author u08774796151
  */
 public class JDlgFuncionarios extends javax.swing.JDialog {
 
@@ -34,7 +34,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
+            .addGap(0, 607, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

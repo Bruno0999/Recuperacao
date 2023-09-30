@@ -5,8 +5,8 @@
  */
 package view;
 
-import bean.Usuario;
-import DAO.UsuarioDAO;
+import bean.BcmUsuarios;
+import dao.UsuariosDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +21,8 @@ public class JDlgLogin extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    UsuarioDAO usuarioDAO;
-    Usuario usuario;
+    UsuariosDAO usuariosDAO;
+    BcmUsuarios bcmUsuarios;
     int contador;
 
     public JDlgLogin(java.awt.Frame parent, boolean modal) {
@@ -30,8 +30,8 @@ public class JDlgLogin extends javax.swing.JDialog {
         initComponents();
         setTitle("Login");
         setLocationRelativeTo(null);
-        usuarioDAO = new UsuarioDAO();
-        usuario = null;
+        usuariosDAO = new UsuariosDAO();
+        bcmUsuarios = null;
         contador = 1;
     }
     
@@ -125,8 +125,8 @@ public class JDlgLogin extends javax.swing.JDialog {
         // TODO add your handling code here:
         String username = jTxtUs.getText().trim();
         String password = jPwfSenha.getText().trim();
-        usuario = new Usuario();
-        usuario = (Usuario) usuarioDAO.Validar(username, password);
+        bcmUsuarios = new BcmUsuarios();
+        bcmUsuarios = (BcmUsuarios) UsuariosDAO.Validar(username, password);
         if (contador < 4) {
             if (username.equals("bruno") && password.equals("123")) {
                 JFrmPrincipalPage mainPage = new JFrmPrincipalPage();
@@ -138,7 +138,7 @@ public class JDlgLogin extends javax.swing.JDialog {
                 mainPage.setVisible(true);
                 // dispose(); // Fechar a tela de login
                 setVisible(false);
-            } else if (usuario != null && username.equals(usuario.getApelido()) && password.equals(usuario.getSenha())) {
+            } else if (bcmUsuarios != null && username.equals(bcmUsuarios.getBcmApelido()) && password.equals(bcmUsuarios.getBcmSenha())) {
                 JFrmPrincipalPage mainPage = new JFrmPrincipalPage();
                 mainPage.setVisible(true);
                 // dispose(); // Fechar a tela de login

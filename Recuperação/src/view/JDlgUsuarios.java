@@ -7,7 +7,7 @@ package view;
 
 import view.pesquisar.JDlgPesquisaUsuarios;
 import javax.swing.JOptionPane;
-import bean.Usuarios;
+import bean.BcmUsuarios;
 import dao.UsuariosDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -81,55 +81,55 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }
     
     
-    public Usuarios viawbean(){
+    public BcmUsuarios viawbean(){
       //int\/
-        Usuarios usuarios = new Usuarios();
+        BcmUsuarios usuarios = new BcmUsuarios();
         int id = Integer.valueOf(JTxtCodigo.getText());
-        usuarios.setIdusuario(id);
+        usuarios.setIdbcmUsuarios(id);
         
          //string\/
-        usuarios.setNome(JTxtNome.getText());
-        usuarios.setApelido(JTxtApelido.getText());
-        usuarios.setCpf(jTxtCpf.getText());
-         usuarios.setSenha(jPwfSenha.getText());
+        usuarios.setBcmNome(JTxtNome.getText());
+        usuarios.setBcmApelido(JTxtApelido.getText());
+        usuarios.setBcmCpf(jTxtCpf.getText());
+         usuarios.setBcmSenha(jPwfSenha.getText());
          
          //iindex\/
-        usuarios.setNivel(jCboNivel.getSelectedIndex());
+        usuarios.setBcmNivel(jCboNivel.getSelectedIndex());
          //selected/boolean
         if (jChbAtivo.isSelected()== true) {
-            usuarios.setAtivo("S");
-        }else{usuarios.setAtivo("N");}
+            usuarios.setBcmAtivo("S");
+        }else{usuarios.setBcmAtivo("N");}
        
          //data\/
          SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jFmtData.getText();
         try {
-          usuarios.setData_nasc(formato.parse(jFmtData.getText()));
+          usuarios.setBcmDataNascimento(formato.parse(jFmtData.getText()));
            } catch (ParseException ex) {
         System.out.println("Erro:" + ex.getMessage());
             }
         
         return usuarios;
     }
-    public Usuarios beanviaw(Usuarios usuarios){
+    public BcmUsuarios beanviaw(BcmUsuarios usuarios){
          //int\/
-       JTxtCodigo.setText( String.valueOf(usuarios.getIdusuario() ) );
+       JTxtCodigo.setText( String.valueOf(usuarios.getIdbcmUsuarios() ) );
         //string\/
-       JTxtNome.setText(usuarios.getNome());
-        JTxtApelido.setText(usuarios.getApelido());
-         jTxtCpf.setText(usuarios.getCpf());
-         jPwfSenha.setText(usuarios.getSenha());
+       JTxtNome.setText(usuarios.getBcmNome());
+        JTxtApelido.setText(usuarios.getBcmApelido());
+         jTxtCpf.setText(usuarios.getBcmCpf());
+         jPwfSenha.setText(usuarios.getBcmSenha());
           //index\/
-       jCboNivel.setSelectedIndex(usuarios.getNivel());
+       jCboNivel.setSelectedIndex(usuarios.getBcmNivel());
        //selected/boolean
-       if (usuarios.getAtivo().equals("S")) {
+       if (usuarios.getBcmAtivo().equals("S")) {
             jChbAtivo.setSelected(true);
        }else{jChbAtivo.setSelected(false);;}
         //data\/
         
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         
-        jFmtData.setText(formato.format(usuarios.getData_nasc()));
+        jFmtData.setText(formato.format(usuarios.getBcmDataNascimento()));
         return usuarios;
       
      
@@ -173,7 +173,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Código");
+        jLabel1.setText("ID");
 
         JTxtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,9 +282,30 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(JTxtNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(222, 222, 222))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addGap(231, 231, 231)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBtnIncluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnConfirmar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addGap(18, 18, 18)
@@ -295,40 +316,17 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jChbAtivo))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jBtnIncluir)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBtnAlterar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBtnExcluir)
-                                .addGap(41, 41, 41)
-                                .addComponent(jBtnConfirmar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(JTxtNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(JTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(418, 418, 418))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -344,16 +342,14 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                     .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jChbAtivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel5)
@@ -363,15 +359,15 @@ public class JDlgUsuarios extends javax.swing.JDialog {
                     .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnConfirmar)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                    .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -400,7 +396,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
          int resp =  JOptionPane.showConfirmDialog(null,  "deseja excluir?", "Pergunta", JOptionPane.YES_NO_OPTION);
        if(resp == JOptionPane.YES_OPTION){
-       Usuarios usuarios = viawbean();
+       BcmUsuarios usuarios = viawbean();
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         usuariosDAO.delete(usuarios);
       }else{

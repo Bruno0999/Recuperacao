@@ -5,18 +5,23 @@
  */
 package view.novo;
 
+import javax.swing.JOptionPane;
+import view.tools.Util;
+
 /**
  *
  * @author migma
  */
 public class JDlgProdutosNovo extends javax.swing.JDialog {
-
+JDlgProdutosNovoIA jDlgProdutosNovoIA;
     /**
      * Creates new form JDlgProdutosNovo
      */
     public JDlgProdutosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("usuarios");
+        jDlgProdutosNovoIA = new JDlgProdutosNovoIA(null, true);
     }
 
     /**
@@ -28,12 +33,18 @@ public class JDlgProdutosNovo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jBtnIncluir1 = new javax.swing.JButton();
-        jBtnAlterar1 = new javax.swing.JButton();
         jBtnExcluir1 = new javax.swing.JButton();
+        jBtnIncluir = new javax.swing.JButton();
+        jBtnAlterar = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,24 +63,24 @@ public class JDlgProdutosNovo extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jBtnIncluir1.setText("Incluir");
-        jBtnIncluir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIncluir1ActionPerformed(evt);
-            }
-        });
-
-        jBtnAlterar1.setText("Alterar");
-        jBtnAlterar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterar1ActionPerformed(evt);
-            }
-        });
-
         jBtnExcluir1.setText("Excluir");
         jBtnExcluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluir1ActionPerformed(evt);
+            }
+        });
+
+        jBtnIncluir.setText("Incluir");
+        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIncluirActionPerformed(evt);
+            }
+        });
+
+        jBtnAlterar.setText("Alterar");
+        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterarActionPerformed(evt);
             }
         });
 
@@ -79,21 +90,21 @@ public class JDlgProdutosNovo extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnIncluir1)
+                .addComponent(jBtnIncluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnAlterar1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBtnAlterar)
+                .addGap(10, 10, 10)
                 .addComponent(jBtnExcluir1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(216, 216, 216))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnIncluir1)
-                    .addComponent(jBtnAlterar1)
-                    .addComponent(jBtnExcluir1))
+                    .addComponent(jBtnExcluir1)
+                    .addComponent(jBtnIncluir)
+                    .addComponent(jBtnAlterar))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -101,41 +112,40 @@ public class JDlgProdutosNovo extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(13, 13, 13)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(13, 13, 13)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnIncluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnIncluir1ActionPerformed
-
-    private void jBtnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnAlterar1ActionPerformed
-
     private void jBtnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnExcluir1ActionPerformed
+if( Util.perguntar("deseja excluir?", "Pergunta")== JOptionPane.YES_OPTION){
+        this.dispose();
+        };    }//GEN-LAST:event_jBtnExcluir1ActionPerformed
+
+    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+ jDlgProdutosNovoIA.setVisible(true);
+ jDlgProdutosNovoIA.setTitle("incluir");
+    }//GEN-LAST:event_jBtnIncluirActionPerformed
+
+    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+ jDlgProdutosNovoIA.setVisible(true);
+ jDlgProdutosNovoIA.setTitle("alterar");
+    }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,11 +190,13 @@ public class JDlgProdutosNovo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAlterar1;
+    private javax.swing.JButton jBtnAlterar;
     private javax.swing.JButton jBtnExcluir1;
-    private javax.swing.JButton jBtnIncluir1;
+    private javax.swing.JButton jBtnIncluir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
