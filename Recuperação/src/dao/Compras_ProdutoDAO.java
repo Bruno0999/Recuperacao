@@ -5,7 +5,7 @@
  */
 package dao;
 
-import bean.BcmFornecedores;
+import bean.BcmComprasProduto;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -14,7 +14,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author migma
  */
-public class FornecedorDAO extends DAO_Abstract{
+public class Compras_ProdutoDAO extends DAO_Abstract{
 
     @Override
     public void insert(Object object) {
@@ -23,7 +23,7 @@ public class FornecedorDAO extends DAO_Abstract{
         session.clear();
         session.save(object);
         session.beginTransaction().commit();
-        }
+    }
 
     @Override
     public void update(Object object) {
@@ -46,8 +46,8 @@ public class FornecedorDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(BcmFornecedores.class);
-        criteria.add(Restrictions.eq("idbcm_fornecedores", id));
+        Criteria criteria = session.createCriteria(BcmComprasProduto.class);
+        criteria.add(Restrictions.eq("idbcm_compras_produto", id));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista.get(0);
@@ -56,10 +56,11 @@ public class FornecedorDAO extends DAO_Abstract{
     @Override
     public List listAll() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(BcmFornecedores.class);
+        Criteria criteria = session.createCriteria(BcmComprasProduto.class);
         List lista = criteria.list();
         session.getTransaction().commit();
-        return lista;
-    }
-    
+        return lista;   
+    }   
 }
+    
+

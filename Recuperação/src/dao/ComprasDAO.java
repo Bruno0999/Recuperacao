@@ -5,6 +5,7 @@
  */
 package dao;
 
+import bean.BcmCompras;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -45,7 +46,7 @@ public class ComprasDAO extends DAO_Abstract{
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Bcm_compras.class);
+        Criteria criteria = session.createCriteria(BcmCompras.class);
         criteria.add(Restrictions.eq("idbcm_compras", id));
         List lista = criteria.list();
         session.getTransaction().commit();
@@ -55,10 +56,11 @@ public class ComprasDAO extends DAO_Abstract{
     @Override
     public List listAll() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Bcm_compras.class);
+        Criteria criteria = session.createCriteria(BcmCompras.class);
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;   
-    }    }
-    
+    }  
 }
+    
+

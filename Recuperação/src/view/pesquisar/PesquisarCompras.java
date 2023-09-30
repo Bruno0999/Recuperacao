@@ -5,6 +5,7 @@
  */
 package view.pesquisar;
 
+import bean.BcmCompras;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +20,8 @@ private List lista;
         this.lista = lista;
     }
 
-    public Bcm_compras getBcm_compras(int row) {
-        return (Bcm_compras) lista.get(row);
+    public BcmCompras getBcmCompras(int row) {
+        return (BcmCompras) lista.get(row);
     }
 
     @Override
@@ -39,15 +40,15 @@ private List lista;
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Bcm_compras bcm_compras = (Bcm_compras) lista.get(rowIndex);
+        BcmCompras bcmCompras = (BcmCompras) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return bcm_compras.getIdbcm_compras();
+            return bcmCompras.getIdbcmCompras();
         }
         if (columnIndex == 1) {
-            return bcm_compras.getNome();
+            return bcmCompras.getBcmQuantia();
         }
         if (columnIndex == 2) {
-            return bcm_compras.getAtivo();
+            return bcmCompras.getBcmDataCompra();
         }
 
         return "";
@@ -58,9 +59,9 @@ private List lista;
             case 0:
                 return "ID";
             case 1:
-                return "Nome";
+                return "Quantia";
             case 2:
-                return "Ativo";
+                return "DataCompra";
         }
         return "";
     }
