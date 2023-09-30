@@ -5,6 +5,7 @@
  */
 package view.pesquisar;
 
+import bean.BcmComprasProduto;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -21,8 +22,8 @@ public class PesquisarComprasProduto extends AbstractTableModel{
         this.lista = lista;
     }
 
-    public Bcm_compras_produto getBcm_compras_produto(int row) {
-        return (Bcm_compras_produto) lista.get(row);
+    public BcmComprasProduto getBcmComprasProduto(int row) {
+        return (BcmComprasProduto) lista.get(row);
     }
 
     @Override
@@ -41,15 +42,15 @@ public class PesquisarComprasProduto extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Bcm_compras_produto bcm_compras_produto = (Bcm_compras_produto) lista.get(rowIndex);
+        BcmComprasProduto bcmComprasProduto = (BcmComprasProduto) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return bcm_compras_produto.getIdbcm_compras_produto();
+            return bcmComprasProduto.getIdbcmComprasProduto();
         }
         if (columnIndex == 1) {
-            return bcm_compras_produto.getNome();
+            return bcmComprasProduto.getBcmQuantia();
         }
         if (columnIndex == 2) {
-            return bcm_compras_produto.getAtivo();
+            return bcmComprasProduto.getBcmDataCompra();
         }
 
         return "";

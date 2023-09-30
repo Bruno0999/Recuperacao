@@ -45,7 +45,7 @@ private List lista;
             return bcmCompras.getIdbcmCompras();
         }
         if (columnIndex == 1) {
-            return bcmCompras.getBcmQuantia();
+            return bcmCompras.getBcmPreco();
         }
         if (columnIndex == 2) {
             return bcmCompras.getBcmDataCompra();

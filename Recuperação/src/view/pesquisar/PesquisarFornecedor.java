@@ -5,6 +5,7 @@
  */
 package view.pesquisar;
 
+import bean.BcmFornecedores;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -21,8 +22,8 @@ public class PesquisarFornecedor extends AbstractTableModel {
         this.lista = lista;
     }
 
-    public Bcm_Fornecedor getBcm_Fornecedor(int row) {
-        return (Bcm_Fornecedor) lista.get(row);
+    public BcmFornecedores getBcmFornecedores(int row) {
+        return (BcmFornecedores) lista.get(row);
     }
 
     @Override
@@ -41,15 +42,15 @@ public class PesquisarFornecedor extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Bcm_Fornecedor bcm_Fornecedor = (Bcm_Fornecedor) lista.get(rowIndex);
+        BcmFornecedores bcmFornecedores = (BcmFornecedores) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return bcm_Fornecedor.getIdbcm_Fornecedor();
+            return bcmFornecedores.getIdbcmFornecedores();
         }
         if (columnIndex == 1) {
-            return bcm_Fornecedor.getNome();
+            return bcmFornecedores.getBcmNome();
         }
         if (columnIndex == 2) {
-            return bcm_Fornecedor.getAtivo();
+            return bcmFornecedores.getBcmRepresentante();
         }
 
         return "";
