@@ -5,6 +5,7 @@
  */
 package view.pesquisar;
 
+import bean.BcmFuncionarios;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -20,18 +21,18 @@ public class PesquisarFuncionarios extends AbstractTableModel{
     public void setList(List lista) {
         this.lista = lista;
     }
+    
+    public BcmFuncionarios getBean(int row) {
+        return (BcmFuncionarios) lista.get(row);
+    }
 
-    public Bcm_funcionarios getBcm_funcionarios(int row) {
-        return (Bcm_funcionarios) lista.get(row);
+    public BcmFuncionarios getBcmFuncionarios(int row) {
+        return (BcmFuncionarios) lista.get(row);
     }
 
     @Override
     public int getRowCount() {
-        if (lista == null) {
-            return 0;
-        } else {
-            return lista.size();
-        }
+        return lista.size();
     }
 
     @Override
@@ -41,18 +42,18 @@ public class PesquisarFuncionarios extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Bcm_funcionarios bcm_funcionarios = (Bcm_funcionarios) lista.get(rowIndex);
+        BcmFuncionarios bcmFuncionarios = (BcmFuncionarios) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return bcm_funcionarios.getIdbcm_funcionarios();
+            return bcmFuncionarios.getIdbcmFuncionario();
         }
         if (columnIndex == 1) {
-            return bcm_funcionarios.getNome();
+            return bcmFuncionarios.getBcmNome();
         }
         if (columnIndex == 2) {
-            return bcm_funcionarios.getAtivo();
+            return bcmFuncionarios.getBcmAtivo();
         }
 
-        return "";
+        return null;
     }
 
     public String getColumnName(int column) {

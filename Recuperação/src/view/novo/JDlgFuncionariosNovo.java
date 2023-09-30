@@ -5,18 +5,37 @@
  */
 package view.novo;
 
+import bean.BcmFuncionarios;
+import dao.FuncionariosDAO;
+import java.util.List;
+import view.pesquisar.PesquisarFuncionarios;
+import view.tools.Util;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author migma
  */
 public class JDlgFuncionariosNovo extends javax.swing.JDialog {
-
+    FuncionariosDAO funcionariosDAO;
+    BcmFuncionarios bcmFuncionarios;
+    PesquisarFuncionarios pesquisarFuncionarios;
+    private JDlgFuncionariosNovoIA jDlgFuncionariosNovoIA;
     /**
      * Creates new form JDlgFuncionariosNovo
      */
     public JDlgFuncionariosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setTitle("Cadastro de Funcionarios");
+        setLocationRelativeTo(null);
+
+        jDlgFuncionariosNovoIA = new JDlgFuncionariosNovoIA(null, true);
+        pesquisarFuncionarios = new PesquisarFuncionarios();
+        funcionariosDAO = new FuncionariosDAO();
+        List lista = funcionariosDAO.listAll();
+        pesquisarFuncionarios.setList(lista);
+        jTable3.setModel(pesquisarFuncionarios);
+
     }
 
     /**
@@ -126,16 +145,26 @@ public class JDlgFuncionariosNovo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIncluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir1ActionPerformed
-        // TODO add your handling code here:
+        jDlgFuncionariosNovoIA.setTitle("Inclusão");
+        jDlgFuncionariosNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnIncluir1ActionPerformed
 
     private void jBtnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar1ActionPerformed
-        // TODO add your handling code here:
+        jDlgFuncionariosNovoIA.setTitle("Alteração");
+        jDlgFuncionariosNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterar1ActionPerformed
 
     private void jBtnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnExcluir1ActionPerformed
+ if (Util.perguntar("Deseja excluir o registro?") == true) {
+            int sel = jTable3.getSelectedRow();
+            bcmFuncionarios = pesquisarFuncionarios.getBean(sel);
+            funcionariosDAO.delete(bcmFuncionarios);
+            //atualizar a lista no jtable
+            List lista = funcionariosDAO.listAll();
+            pesquisarFuncionarios.setList(lista);
+        } else {
+            Util.mensagem("Exclusão cancelada.");
+        }    }//GEN-LAST:event_jBtnExcluir1ActionPerformed
 
     /**
      * @param args the command line arguments

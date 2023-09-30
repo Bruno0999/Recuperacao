@@ -5,6 +5,7 @@
  */
 package view.pesquisar;
 
+import bean.BcmProdutos;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,8 +20,11 @@ private List lista;
         this.lista = lista;
     }
 
-    public Bcm_produtos getBcm_produtos(int row) {
-        return (Bcm_produtos) lista.get(row);
+    public BcmProdutos getBcmProdutos(int row) {
+        return (BcmProdutos) lista.get(row);
+    }
+     public BcmProdutos getBean(int row) {
+        return (BcmProdutos) lista.get(row);
     }
 
     @Override
@@ -39,18 +43,18 @@ private List lista;
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Bcm_produtos bcm_produtos = (Bcm_produtos) lista.get(rowIndex);
+        BcmProdutos bcm_produtos = (BcmProdutos) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return bcm_produtos.getIdbcm_produtos();
+            return bcm_produtos.getIdbcmProdutos();
         }
         if (columnIndex == 1) {
-            return bcm_produtos.getNome();
+            return bcm_produtos.getBcmNome();
         }
         if (columnIndex == 2) {
-            return bcm_produtos.getAtivo();
+            return bcm_produtos.getBcmPreco();
         }
 
-        return "";
+        return null;
     }
 
     public String getColumnName(int column) {
@@ -60,7 +64,7 @@ private List lista;
             case 1:
                 return "Nome";
             case 2:
-                return "Ativo";
+                return "Preco";
         }
         return "";
     }

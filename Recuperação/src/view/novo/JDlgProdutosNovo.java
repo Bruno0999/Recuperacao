@@ -5,7 +5,11 @@
  */
 package view.novo;
 
+import bean.BcmProdutos;
+import dao.ProdutosDAO;
+import java.util.List;
 import javax.swing.JOptionPane;
+import view.pesquisar.PesquisarProdutos;
 import view.tools.Util;
 
 /**
@@ -13,14 +17,17 @@ import view.tools.Util;
  * @author migma
  */
 public class JDlgProdutosNovo extends javax.swing.JDialog {
-JDlgProdutosNovoIA jDlgProdutosNovoIA;
+    ProdutosDAO produtosDAO;
+    BcmProdutos bcmProdutos;
+    PesquisarProdutos pesquisarProdutos;
+    private JDlgProdutosNovoIA jDlgProdutosNovoIA;
     /**
      * Creates new form JDlgProdutosNovo
      */
     public JDlgProdutosNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("usuarios");
+        setTitle("Produtos");
         jDlgProdutosNovoIA = new JDlgProdutosNovoIA(null, true);
     }
 
@@ -133,13 +140,22 @@ JDlgProdutosNovoIA jDlgProdutosNovoIA;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir1ActionPerformed
-if( Util.perguntar("deseja excluir?", "Pergunta")== JOptionPane.YES_OPTION){
-        this.dispose();
+if (Util.perguntar("Deseja excluir o registro?") == true) {
+            int sel = jTable3.getSelectedRow();
+            bcmProdutos = pesquisarProdutos.getBean(sel);
+            produtosDAO.delete(bcmProdutos);
+            //atualizar a lista no jtable
+            List lista = produtosDAO.listAll();
+            pesquisarProdutos.setList(lista);
+        } else {
+            Util.mensagem("Exclusão cancelada.");
+        }
+{
         };    }//GEN-LAST:event_jBtnExcluir1ActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
- jDlgProdutosNovoIA.setVisible(true);
- jDlgProdutosNovoIA.setTitle("incluir");
+    jDlgProdutosNovoIA.setVisible(true);
+    jDlgProdutosNovoIA.setTitle("incluir");
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -200,3 +216,4 @@ if( Util.perguntar("deseja excluir?", "Pergunta")== JOptionPane.YES_OPTION){
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
+

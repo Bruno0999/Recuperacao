@@ -22,7 +22,7 @@ public class JFrmPrincipalPage extends javax.swing.JFrame {
      */
     public JFrmPrincipalPage() {
         initComponents();
-        setTitle("Locadora de Filmes");
+        setTitle("Cafeteria");
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
     }
@@ -62,7 +62,6 @@ public class JFrmPrincipalPage extends javax.swing.JFrame {
         jMenu.setText("Cadastro");
 
         jMnUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usuario1.png"))); // NOI18N
         jMnUsuarios.setText("Usuarios");
         jMnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -7,7 +7,10 @@ package dao;
 
 
 import bean.BcmUsuarios;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -16,7 +19,7 @@ import org.hibernate.criterion.Restrictions;
  * @author u08774796151
  */
 public class UsuariosDAO extends DAO_Abstract {
-
+ 
     @Override
     public void insert(Object object) {
         session.beginTransaction();
@@ -60,4 +63,6 @@ public class UsuariosDAO extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;    }
     
+    
 }
+

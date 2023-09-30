@@ -5,19 +5,38 @@
  */
 package view.novo;
 
+
+import bean.BcmProdutos;
+import dao.ProdutosDAO;
+import view.tools.Util;
+import static view.tools.Util.intToStr;
+
 /**
  *
  * @author migma
  */
 public class JDlgProdutosNovoIA extends javax.swing.JDialog {
-
+        JDlgProdutosNovo jDlgProdutosNovo;
     /**
      * Creates new form JDlgProdutosNovoIA
      */
     public JDlgProdutosNovoIA(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setTitle("Inclusão");
+        setLocationRelativeTo(null);
     }
+ public BcmProdutos viewBean() {
+        BcmProdutos bcmProdutos = new BcmProdutos();
+        bcmProdutos.setIdbcmProdutos(Util.strToInt(jTxtID.getText()));
+        bcmProdutos.setBcmNome(jTxtNome.getText());
+        bcmProdutos.setBcmDescricao(jTxtDescricao.getText());
+        bcmProdutos.setBcmDataRegistro(Util.strDate(jFmtData.getText()));       
+        bcmProdutos.setBcmPreco(jTxtPreco.getText());
+        bcmProdutos.setBcmCategoria(intToStr(jCboSabor.getSelectedIndex()));
+        return bcmProdutos;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,11 +47,11 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JTxtID = new javax.swing.JTextField();
+        jTxtID = new javax.swing.JTextField();
         jCboSabor = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        JTxtNome = new javax.swing.JTextField();
+        jTxtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jFmtData = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -46,9 +65,9 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        JTxtID.addActionListener(new java.awt.event.ActionListener() {
+        jTxtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTxtIDActionPerformed(evt);
+                jTxtIDActionPerformed(evt);
             }
         });
 
@@ -63,9 +82,9 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
 
         jLabel1.setText("ID");
 
-        JTxtNome.addActionListener(new java.awt.event.ActionListener() {
+        jTxtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTxtNomeActionPerformed(evt);
+                jTxtNomeActionPerformed(evt);
             }
         });
 
@@ -127,7 +146,7 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(JTxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                            .addComponent(jTxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                         .addGap(263, 263, 263))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +159,7 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +175,7 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTxtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -164,7 +183,7 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,31 +204,31 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTxtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtIDActionPerformed
+    private void jTxtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTxtIDActionPerformed
+    }//GEN-LAST:event_jTxtIDActionPerformed
 
     private void jCboSaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboSaborActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCboSaborActionPerformed
 
-    private void JTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTxtNomeActionPerformed
+    private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTxtNomeActionPerformed
+    }//GEN-LAST:event_jTxtNomeActionPerformed
 
     private void jTxtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtPrecoActionPerformed
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jBtnOkActionPerformed
+        BcmProdutos bcmProdutos = viewBean();
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        produtosDAO.insert(bcmProdutos);
+        setVisible(false);    }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        // TODO add your handling code here:
 
-        this.dispose();
+        setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDescricaoActionPerformed
@@ -259,8 +278,6 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTxtID;
-    private javax.swing.JTextField JTxtNome;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnOk;
     private javax.swing.JComboBox<String> jCboSabor;
@@ -273,6 +290,8 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTxtDescricao;
+    private javax.swing.JTextField jTxtID;
+    private javax.swing.JTextField jTxtNome;
     private javax.swing.JFormattedTextField jTxtPreco;
     // End of variables declaration//GEN-END:variables
 }

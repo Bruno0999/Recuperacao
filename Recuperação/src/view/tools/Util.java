@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package view.tools;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -17,44 +19,71 @@ import javax.swing.JOptionPane;
  * @author u08774796151
  */
 public class Util {
-    public static void habilitar(boolean valor, JComponent ... vetCampo) {
-        for (int i = 0; i < vetCampo.length; i++) {
-           vetCampo[i].setEnabled(valor);
-            
+
+    public static void habilitar(boolean valor, JComponent... vetComp) {
+        for (int i = 0; i < vetComp.length; i++) {
+            vetComp[i].setEnabled(valor);
         }
     }
-    
-    public static void limp(JComponent ... vetCamp) {
-        for (int i = 0; i < vetCamp.length; i++) {
-            
-            
-           ((JTextField) vetCamp[i]).setText("");
-            
+
+    public static void limparCampos(JComponent... vetComp) {
+        for (JComponent componente : vetComp) {
+            if ( componente instanceof JTextField){
+                JTextField objeto = (JTextField) componente;
+                objeto.setText("");
+            } else if ( componente instanceof JComboBox) {
+                JComboBox objeto = (JComboBox) componente;
+                objeto.setSelectedIndex(-1);
+            } else if ( componente instanceof JCheckBox) {
+                JCheckBox objeto = (JCheckBox) componente;
+                objeto.setSelected(false);
+            }
         }
-    }
-    public static void msg( String mensagem) {
-         JOptionPane.showMessageDialog(null, mensagem);
-    }
-    public static int perguntar(String mensagem, String pergunta) {
-      return  JOptionPane.showConfirmDialog(null,  mensagem, pergunta, JOptionPane.YES_NO_OPTION);
         
     }
-    public static int strInt(String cad) {
-        return 0;
+    public static void mensagem(String mensagem) {
+
+        JOptionPane.showMessageDialog(null, mensagem);
+
     }
-     public static String intStr(int num) {
-        return "" ;
+
+   public static boolean perguntar(String msg){
+         return JOptionPane.showConfirmDialog(null, msg, "Pergunta", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
-     public static double strDouble(String cad) {
-        return 0;
+
+    public static int strToInt(String valor) {
+        return Integer.valueOf(valor);
     }
-      public static String doubleStr(String num) {
-        return "";
+
+    public static String intToStr(int valor) {
+        return String.valueOf(valor);
+
     }
-      public static Date strData(String cad) {
+
+      
+     public static double strDouble (String cad){
+         return Double.valueOf(cad);
+     }
+     
+     public static String doubleStr(double num){
+         return String.valueOf(num);
+     }
+
+    public static java.util.Date strDate(String data) {
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+            return formato.parse(data);
+        } catch (ParseException ex) {
+            System.out.println("Erro na conversão da data.");
+        }
         return null;
     }
-      public static String dataStr(String data) {
-        return "";
+
+    public static String dateStr(java.util.Date data){
+         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+         return formato.format(data);
+     
+
     }
+
 }
