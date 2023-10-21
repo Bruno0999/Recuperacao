@@ -46,11 +46,11 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_bruno_monteiro?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">bruno_monteiro</property>
     <property name="hibernate.connection.password">bruno_monteiro</property>
-    <mapping class="bean.BcmFuncionarios"/>
-    <mapping class="bean.BcmProdutos"/>
-    <mapping class="bean.BcmUsuarios"/>
-    <mapping class="bean.BcmCompras"/>
     <mapping class="bean.BcmFornecedores"/>
+    <mapping class="bean.BcmFuncionarios"/>
+    <mapping class="bean.BcmUsuarios"/>
+    <mapping class="bean.BcmProdutos"/>
     <mapping class="bean.BcmComprasProduto"/>
+    <mapping class="bean.BcmCompras"/>
   </session-factory>
 </hibernate-configuration>

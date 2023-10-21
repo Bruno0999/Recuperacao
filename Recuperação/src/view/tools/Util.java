@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author u08774796151
  */
 public class Util {
+    
 
     public static void habilitar(boolean valor, JComponent... vetComp) {
         for (int i = 0; i < vetComp.length; i++) {

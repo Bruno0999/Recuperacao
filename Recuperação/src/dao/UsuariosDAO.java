@@ -7,7 +7,9 @@ package dao;
 
 
 import bean.BcmUsuarios;
+import static java.lang.Thread.State.NEW;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +20,28 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author u08774796151
  */
+
+
 public class UsuariosDAO extends DAO_Abstract {
+    
+    // Suponha que users seja uma coleção que contém seus usuários
+    private static List<BcmUsuarios> users = new ArrayList<>();
+
+    // Método para adicionar usuários (simulando o banco de dados)
+    public static void adicionarUsuario(BcmUsuarios usuario) {
+        users.add(usuario);
+    }
+
+    // Método para validar o login
+    public static BcmUsuarios Validar(String username, String password) {
+        for (BcmUsuarios usuario : users) {
+            if (usuario.getBcmNome().equals(username) && usuario.getBcmSenha().equals(password)) {
+                return usuario;  // Retorna o usuário se as credenciais coincidirem
+            }
+        }
+        return null;  // Retorna null se as credenciais não forem encontradas
+    }
+
  
     @Override
     public void insert(Object object) {
@@ -63,6 +86,18 @@ public class UsuariosDAO extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;    }
     
+    public List ListNome(String nome){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmUsuarios.class);
+        criteria.add(Restrictions.like("nome", "%"+nome+"%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
     
+    public static void main(String[] args){
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+    }
 }
+
 

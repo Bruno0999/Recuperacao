@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author migma
@@ -30,7 +32,6 @@ public class JDlgCompras extends javax.swing.JDialog {
 
         jTxtCodigo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jCboProduto = new javax.swing.JComboBox<Cliente>();
         jBtnIncluirFilme = new javax.swing.JButton();
         jBtnAlterarFilme = new javax.swing.JButton();
         jBtnExcluirFilme = new javax.swing.JButton();
@@ -39,6 +40,7 @@ public class JDlgCompras extends javax.swing.JDialog {
         jFmtDataCompra = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jCboProduto = new javax.swing.JComboBox<BcmProdutos>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,6 +84,8 @@ public class JDlgCompras extends javax.swing.JDialog {
 
         jLabel3.setText("Código:");
 
+        jCboProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,15 +93,6 @@ public class JDlgCompras extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCboProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +102,16 @@ public class JDlgCompras extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBtnAlterarFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jBtnExcluirFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnIncluirFilme))))
+                            .addComponent(jBtnIncluirFilme)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCboProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -119,7 +123,7 @@ public class JDlgCompras extends javax.swing.JDialog {
                     .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jCboProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addGap(1, 1, 1)
                 .addComponent(jFmtDataCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +136,7 @@ public class JDlgCompras extends javax.swing.JDialog {
                         .addComponent(jBtnAlterarFilme)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnExcluirFilme)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,9 +145,8 @@ public class JDlgCompras extends javax.swing.JDialog {
     private void jBtnIncluirFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirFilmeActionPerformed
         // TODO add your handling code here:
 
-        JDlgAluguelFilme jDlgAluguelFilme = new JDlgAluguelFilme(null, true);
-        jDlgAluguelFilme.setTelaAnterior(this, Integer.valueOf(jTxtId.getText()));
-        jDlgAluguelFilme.setVisible(true);
+        JDlgCompras jDlgCompras = new JDlgCompras(null, true);
+        jDlgCompras.setVisible(true);
     }//GEN-LAST:event_jBtnIncluirFilmeActionPerformed
 
     private void jBtnAlterarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarFilmeActionPerformed
@@ -153,9 +156,8 @@ public class JDlgCompras extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada");
         } else {
             afc.removeList(linha);
-            JDlgAluguelFilme jDlgAluguelFilme = new JDlgAluguelFilme(null, true);
-            jDlgAluguelFilme.setTelaAnterior(this, Integer.valueOf(jTxtId.getText()));
-            jDlgAluguelFilme.setVisible(true);
+            JDlgCompras jDlgCompras = new JDlgCompras(null, true);
+            jDlgCompras.setVisible(true);
         }
     }//GEN-LAST:event_jBtnAlterarFilmeActionPerformed
 
@@ -221,7 +223,7 @@ public class JDlgCompras extends javax.swing.JDialog {
     private javax.swing.JButton jBtnAlterarFilme;
     private javax.swing.JButton jBtnExcluirFilme;
     private javax.swing.JButton jBtnIncluirFilme;
-    private javax.swing.JComboBox<Cliente> jCboProduto;
+    private javax.swing.JComboBox<String> jCboProduto;
     private javax.swing.JFormattedTextField jFmtDataCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

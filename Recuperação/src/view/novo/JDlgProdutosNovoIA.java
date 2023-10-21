@@ -8,6 +8,8 @@ package view.novo;
 
 import bean.BcmProdutos;
 import dao.ProdutosDAO;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import view.tools.Util;
 import static view.tools.Util.intToStr;
 
@@ -17,6 +19,7 @@ import static view.tools.Util.intToStr;
  */
 public class JDlgProdutosNovoIA extends javax.swing.JDialog {
         JDlgProdutosNovo jDlgProdutosNovo;
+        
     /**
      * Creates new form JDlgProdutosNovoIA
      */
@@ -263,6 +266,7 @@ public class JDlgProdutosNovoIA extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
+        SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JDlgProdutosNovoIA dialog = new JDlgProdutosNovoIA(new javax.swing.JFrame(), true);

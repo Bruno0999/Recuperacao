@@ -21,11 +21,13 @@ import view.tools.Util;
  * @author u10916731103
  */
 public class JDlgUsuarios extends javax.swing.JDialog {
+    
 
     private boolean incluindo;
     MaskFormatter mascaraCPF, mascaraDataNascimento;
     public BcmUsuarios usuarios;
     public UsuariosDAO usuariosDAO;
+    
 
     public JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -49,6 +51,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         jFmtDataDeNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNascimento));
 
     }
+    
 
     public BcmUsuarios viewBean() {
         BcmUsuarios bcmUsuarios = new BcmUsuarios();
